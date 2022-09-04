@@ -64,93 +64,111 @@
                     </span>
                 </a>
             </li>
-            <li class=" navigation-header">
-                <span data-i18n="{{ __('Data') }}">{{ __('Data') }}</span>
-                <i data-feather="more-horizontal"></i>
-            </li>
-            <li class="{{ Request::is('user') || Request::is('user/*') ? 'active' : '' }} nav-item">
-                <a class="d-flex align-items-center" href="{{ route('user.index') }}">
-                    <i data-feather="users"></i>
-                    <span class="menu-title text-truncate" data-i18n="{{ __('User') }}">
-                        {{ __('User') }}
-                    </span>
-                    {{-- <span class="badge badge-light-warning rounded-pill ms-auto">2</span> --}}
-                </a>
-            </li>
-            <li class=" nav-item">
-                <a class="d-flex align-items-center" href="#">
-                    <i data-feather="layout"></i>
-                    <span class="menu-title text-truncate" data-i18n="{{ __('Master') }}">
-                        {{ __('Master') }}
-                    </span>
-                </a>
-                <ul class="menu-content">
-                    <li class="{{ Request::is('samsat') || Request::is('samsat/*') ? 'active' : '' }}">
-                        <a class="d-flex align-items-center" href="{{ route('samsat.index') }}">
-                            <i data-feather="circle"></i>
-                            <span class="menu-item text-truncate" data-i18n="{{ __('Samsat') }}">
-                                {{ __('Samsat') }}
+            @role('kasir samsat|pptk')
+                <li class=" navigation-header">
+                    <span data-i18n="{{ __('Data') }}">{{ __('Data') }}</span>
+                    <i data-feather="more-horizontal"></i>
+                </li>
+            @endrole
+            @role('admin')
+                <li class="{{ Request::is('user') || Request::is('user/*') ? 'active' : '' }} nav-item">
+                    <a class="d-flex align-items-center" href="{{ route('user.index') }}">
+                        <i data-feather="users"></i>
+                        <span class="menu-title text-truncate" data-i18n="{{ __('User') }}">
+                            {{ __('User') }}
+                        </span>
+                        {{-- <span class="badge badge-light-warning rounded-pill ms-auto">2</span> --}}
+                    </a>
+                </li>
+            @endrole
+            @role('kasir samsat|pptk')
+                <li class=" nav-item">
+                    <a class="d-flex align-items-center" href="#">
+                        <i data-feather="layout"></i>
+                        <span class="menu-title text-truncate" data-i18n="{{ __('Master') }}">
+                            {{ __('Master') }}
+                        </span>
+                    </a>
+                    <ul class="menu-content">
+                        @role('kasir samsat')
+                            <li class="{{ Request::is('samsat') || Request::is('samsat/*') ? 'active' : '' }}">
+                                <a class="d-flex align-items-center" href="{{ route('samsat.index') }}">
+                                    <i data-feather="circle"></i>
+                                    <span class="menu-item text-truncate" data-i18n="{{ __('Samsat') }}">
+                                        {{ __('Samsat') }}
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="{{ Request::is('stnk') || Request::is('stnk/*') ? 'active' : '' }}">
+                                <a class="d-flex align-items-center" href="{{ route('stnk.index') }}">
+                                    <i data-feather="circle"></i>
+                                    <span class="menu-item text-truncate" data-i18n="{{ __('STNK') }}">
+                                        {{ __('STNK') }}
+                                    </span>
+                                </a>
+                            </li>
+                        @endrole
+                        @role('pptk')
+                            <li class="{{ Request::is('lokasi') || Request::is('lokasi/*') ? 'active' : '' }}">
+                                <a class="d-flex align-items-center" href="{{ route('lokasi.index') }}">
+                                    <i data-feather="circle"></i>
+                                    <span class="menu-item text-truncate" data-i18n="{{ __('Lokasi') }}">
+                                        {{ __('Lokasi') }}
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="{{ Request::is('rak') || Request::is('rak/*') ? 'active' : '' }}">
+                                <a class="d-flex align-items-center" href="{{ route('rak.index') }}">
+                                    <i data-feather="circle"></i>
+                                    <span class="menu-item text-truncate" data-i18n="{{ __('RAK') }}">
+                                        {{ __('RAK') }}
+                                    </span>
+                                </a>
+                            </li>
+                        @endrole
+                    </ul>
+                </li>
+            @endrole
+            @role('pptk|kepala dinas')
+                <li class=" navigation-header">
+                    <span data-i18n="{{ __('Transaksi') }}">{{ __('Transaksi') }}</span>
+                    <i data-feather="more-horizontal"></i>
+                </li>
+                @role('kepala dinas|pptk')
+                    <li class="{{ Request::is('rc') || Request::is('rc/*') ? 'active' : '' }} nav-item">
+                        <a class="d-flex align-items-center" href="{{ route('rc.index') }}">
+                            <i data-feather='book-open'></i>
+                            <span class="menu-title text-truncate" data-i18n="{{ __('Record Centre') }}">
+                                {{ __('Record Centre') }}
                             </span>
                         </a>
                     </li>
-                    <li class="{{ Request::is('stnk') || Request::is('stnk/*') ? 'active' : '' }}">
-                        <a class="d-flex align-items-center" href="{{ route('stnk.index') }}">
-                            <i data-feather="circle"></i>
-                            <span class="menu-item text-truncate" data-i18n="{{ __('STNK') }}">
-                                {{ __('STNK') }}
+                @endrole
+                @role('pptk')
+                    <li class="{{ Request::is('dpa') || Request::is('dpa/*') ? 'active' : '' }} nav-item">
+                        <a class="d-flex align-items-center" href="{{ route('dpa.index') }}">
+                            <i data-feather='file-text'></i>
+                            <span class="menu-title text-truncate" data-i18n="{{ __('Pertelaan Arsip') }}">
+                                {{ __('Pertelaan Arsip') }}
                             </span>
                         </a>
                     </li>
-                    <li class="{{ Request::is('lokasi') || Request::is('lokasi/*') ? 'active' : '' }}">
-                        <a class="d-flex align-items-center" href="{{ route('lokasi.index') }}">
-                            <i data-feather="circle"></i>
-                            <span class="menu-item text-truncate" data-i18n="{{ __('Lokasi') }}">
-                                {{ __('Lokasi') }}
-                            </span>
-                        </a>
-                    </li>
-                    <li class="{{ Request::is('rak') || Request::is('rak/*') ? 'active' : '' }}">
-                        <a class="d-flex align-items-center" href="{{ route('rak.index') }}">
-                            <i data-feather="circle"></i>
-                            <span class="menu-item text-truncate" data-i18n="{{ __('RAK') }}">
-                                {{ __('RAK') }}
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class=" navigation-header">
-                <span data-i18n="{{ __('Transaksi') }}">{{ __('Transaksi') }}</span>
-                <i data-feather="more-horizontal"></i>
-            </li>
-            <li class="{{ Request::is('rc') || Request::is('rc/*') ? 'active' : '' }} nav-item">
-                <a class="d-flex align-items-center" href="{{ route('rc.index') }}">
-                    <i data-feather='book-open'></i>
-                    <span class="menu-title text-truncate" data-i18n="{{ __('Record Centre') }}">
-                        {{ __('Record Centre') }}
-                    </span>
-                </a>
-            </li>
-            <li class="{{ Request::is('dpa') || Request::is('dpa/*') ? 'active' : '' }} nav-item">
-                <a class="d-flex align-items-center" href="{{ route('dpa.index') }}">
-                    <i data-feather='file-text'></i>
-                    <span class="menu-title text-truncate" data-i18n="{{ __('Pertelaan Arsip') }}">
-                        {{ __('Pertelaan Arsip') }}
-                    </span>
-                </a>
-            </li>
-            <li class=" navigation-header">
-                <span data-i18n="{{ __('Laporan') }}">{{ __('Laporan') }}</span>
-                <i data-feather="more-horizontal"></i>
-            </li>
-            <li class="{{ Request::is('laporan') || Request::is('laporan/*') ? 'active' : '' }} nav-item">
-                <a class="d-flex align-items-center" href="{{ route('laporan.index') }}">
-                    <i data-feather='clipboard'></i>
-                    <span class="menu-title text-truncate" data-i18n="{{ __('Laporan DPA') }}">
-                        {{ __('Laporan DPA') }}
-                    </span>
-                </a>
-            </li>
+                @endrole
+            @endrole
+            @role('pptk|kepala samsat')
+                <li class=" navigation-header">
+                    <span data-i18n="{{ __('Laporan') }}">{{ __('Laporan') }}</span>
+                    <i data-feather="more-horizontal"></i>
+                </li>
+                <li class="{{ Request::is('laporan') || Request::is('laporan/*') ? 'active' : '' }} nav-item">
+                    <a class="d-flex align-items-center" href="{{ route('laporan.index') }}">
+                        <i data-feather='clipboard'></i>
+                        <span class="menu-title text-truncate" data-i18n="{{ __('Laporan DPA') }}">
+                            {{ __('Laporan DPA') }}
+                        </span>
+                    </a>
+                </li>
+            @endrole
             <li class=" navigation-header">
                 <span data-i18n="{{ __('Akun') }}">{{ __('Akun') }}</span>
                 <i data-feather="more-horizontal"></i>

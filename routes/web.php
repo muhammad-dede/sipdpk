@@ -2,11 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::group(['middleware' => ['auth', 'verified']], function () {
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/', [\App\Http\Controllers\HomeController::class, 'dashboard']);
     Route::get('home', [\App\Http\Controllers\HomeController::class, 'dashboard'])->name('home');
     Route::resource('user', \App\Http\Controllers\UserController::class);
     Route::resource('samsat', \App\Http\Controllers\SamsatController::class);

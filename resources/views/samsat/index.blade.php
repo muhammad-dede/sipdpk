@@ -66,16 +66,18 @@
                                                                     <i data-feather="edit-2" class="me-50"></i>
                                                                     <span>{{ __('Ubah') }}</span>
                                                                 </a>
-                                                                <form action="{{ route('samsat.destroy', $item->id) }}"
-                                                                    class="d-inline form-delete" method="POST">
-                                                                    @csrf
-                                                                    @method('delete')
-                                                                    <button type="submit"
-                                                                        class="dropdown-item w-100 btn-delete">
-                                                                        <i data-feather="trash" class="me-50"></i>
-                                                                        <span>{{ __('Hapus') }}</span>
-                                                                    </button>
-                                                                </form>
+                                                                @role('admin')
+                                                                    <form action="{{ route('samsat.destroy', $item->id) }}"
+                                                                        class="d-inline form-delete" method="POST">
+                                                                        @csrf
+                                                                        @method('delete')
+                                                                        <button type="submit"
+                                                                            class="dropdown-item w-100 btn-delete">
+                                                                            <i data-feather="trash" class="me-50"></i>
+                                                                            <span>{{ __('Hapus') }}</span>
+                                                                        </button>
+                                                                    </form>
+                                                                @endrole
                                                             </div>
                                                         </div>
                                                     </td>

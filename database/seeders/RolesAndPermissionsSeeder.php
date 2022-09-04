@@ -18,9 +18,11 @@ class RolesAndPermissionsSeeder extends Seeder
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         $roles = [
-            ['name' => 'administrator'],
             ['name' => 'admin'],
-            ['name' => 'user'],
+            ['name' => 'kasir samsat'],
+            ['name' => 'kepala samsat'],
+            ['name' => 'pptk'],
+            ['name' => 'kepala dinas'],
         ];
 
         foreach ($roles as $role) {
