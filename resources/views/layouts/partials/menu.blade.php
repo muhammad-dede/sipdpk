@@ -64,7 +64,7 @@
                     </span>
                 </a>
             </li>
-            @role('kasir samsat|pptk')
+            @role('kasir samsat|pptk|admin')
                 <li class=" navigation-header">
                     <span data-i18n="{{ __('Data') }}">{{ __('Data') }}</span>
                     <i data-feather="more-horizontal"></i>
@@ -81,7 +81,7 @@
                     </a>
                 </li>
             @endrole
-            @role('kasir samsat|pptk')
+            @role('kasir samsat|pptk|admin')
                 <li class=" nav-item">
                     <a class="d-flex align-items-center" href="#">
                         <i data-feather="layout"></i>
@@ -90,7 +90,7 @@
                         </span>
                     </a>
                     <ul class="menu-content">
-                        @role('kasir samsat')
+                        @role('kasir samsat|admin')
                             <li class="{{ Request::is('samsat') || Request::is('samsat/*') ? 'active' : '' }}">
                                 <a class="d-flex align-items-center" href="{{ route('samsat.index') }}">
                                     <i data-feather="circle"></i>
@@ -108,7 +108,7 @@
                                 </a>
                             </li>
                         @endrole
-                        @role('pptk')
+                        @role('pptk|admin')
                             <li class="{{ Request::is('lokasi') || Request::is('lokasi/*') ? 'active' : '' }}">
                                 <a class="d-flex align-items-center" href="{{ route('lokasi.index') }}">
                                     <i data-feather="circle"></i>
@@ -129,12 +129,12 @@
                     </ul>
                 </li>
             @endrole
-            @role('pptk|kepala dinas')
+            @role('pptk|kepala dinas|admin')
                 <li class=" navigation-header">
                     <span data-i18n="{{ __('Transaksi') }}">{{ __('Transaksi') }}</span>
                     <i data-feather="more-horizontal"></i>
                 </li>
-                @role('kepala dinas|pptk')
+                @role('kepala dinas|pptk|admin')
                     <li class="{{ Request::is('rc') || Request::is('rc/*') ? 'active' : '' }} nav-item">
                         <a class="d-flex align-items-center" href="{{ route('rc.index') }}">
                             <i data-feather='book-open'></i>
@@ -144,7 +144,7 @@
                         </a>
                     </li>
                 @endrole
-                @role('pptk')
+                @role('pptk|admin')
                     <li class="{{ Request::is('dpa') || Request::is('dpa/*') ? 'active' : '' }} nav-item">
                         <a class="d-flex align-items-center" href="{{ route('dpa.index') }}">
                             <i data-feather='file-text'></i>
@@ -155,7 +155,7 @@
                     </li>
                 @endrole
             @endrole
-            @role('pptk|kepala samsat')
+            @role('pptk|kepala samsat|admin')
                 <li class=" navigation-header">
                     <span data-i18n="{{ __('Laporan') }}">{{ __('Laporan') }}</span>
                     <i data-feather="more-horizontal"></i>
